@@ -35,5 +35,5 @@ uv run bench.py report                       # 只看网格
   - 插件 DAG 快照：`pi-dag` 无工具；`pi-lcm` 加 `lcm_grep` / `lcm_expand`。插件默认 2 万 token 叶子、扇入 4、最深 3 层；不开后台预摘要，每份快照走同一条压缩路径。压缩时模型出错会退回原生摘要，`compactions[].fromHook` / `nodes` 记录每次实际用的是哪种。
 - Pi 组用 Pi SDK 0.85.1、隔离 agent 目录、自动压缩关，只跑上面 3 次显式压缩；同一快照上的两组只差答题时的工具。
 - 数据用 `_M`：`_S` 切段后每段约 2.7 万 token，snapcompact 在这个量级拒绝执行；`_M` 每段约 30 万 token，接近生产压缩量级。
-- 答题与判分 prompt 取自官方仓库 `run_generation.py` / `evaluate_qa.py`。
+- 答题与判分 prompt 原文取自 [LongMemEval](https://github.com/xiaowu0162/LongMemEval) 官方仓库的 `run_generation.py` / `evaluate_qa.py`（MIT，声明见 `THIRD_PARTY_NOTICES.md`）。
 - `data/` 放 HF `xiaowu0162/longmemeval` 的 `longmemeval_s.json` / `longmemeval_m.json`；`uv run bench.py sample --data m --per-type 2` 生成 `sample.json`。`run`/`judge` 可断点续跑；失败题（如 clp `content_filter`）计错并单列。

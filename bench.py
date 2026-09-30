@@ -64,7 +64,8 @@ PROFILES = {"luna-high": {}}
 LOCAL_IMPORT = re.compile(r'from "\./([\w.-]+\.ts)"')
 SUMMARY_CONCURRENCY = "4"  # per compaction; with --jobs 8 that is 32 parallel summary calls (the level measured on clp)
 
-# Official LongMemEval prompts (src/generation/run_generation.py, src/evaluation/evaluate_qa.py).
+# Official LongMemEval prompts, verbatim (src/generation/run_generation.py, src/evaluation/evaluate_qa.py; MIT, see
+# THIRD_PARTY_NOTICES.md).
 ASK = ("Please answer the question based on the relevant chat history above. Answer the question step by step: "
        "first extract all the relevant information, and then reason over the information to get the answer.\n\n"
        "Current Date: {}\nQuestion: {}\nAnswer (step by step):")
